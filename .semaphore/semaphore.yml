@@ -1,0 +1,50 @@
+version: v1.0
+
+name: Test
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+
+global_job_config:
+
+  secrets:
+    - name: ACCESS_TOKENS
+
+  prologue:
+    commands:
+      - echo $DOCKER_TOKEN | docker login --username "$DOCKER_USERNAME" --password-stdin
+
+  env_vars:
+    - name: DOCKER_USERNAME
+      value: sineverba
+    - name: DOCKER_IMAGE
+      value: serverless
+    - name: NODE_VERSION
+      value: 18.15.0
+    - name: NPM_VERSION
+      value: 9.6.2
+    - name: SERVERLESS_VERSION
+      value: 3.28.1
+
+blocks:
+  - name: 'Build and test'
+    skip:
+      when: "tag =~ '.*'"
+    task:
+      jobs:
+        - name: 'Build and test'
+          commands:
+            - checkout
+            - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE "."
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux v3.17"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "VERSION_ID=3.17.2"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE node -v | grep $NODE_VERSION
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep $NPM_VERSION
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE serverless -v | grep $SERVERLESS_VERSION
+
+promotions:
+  - name: Deploy
+    pipeline_file: build-deploy.yml
+    auto_promote:
+      when: "result = 'passed' and tag =~ '.*'"
