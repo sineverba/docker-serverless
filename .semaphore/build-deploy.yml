@@ -22,6 +22,12 @@ global_job_config:
       value: sineverba
     - name: DOCKER_IMAGE
       value: serverless
+    - name: NODE_VERSION
+      value: 18.15.0
+    - name: NPM_VERSION
+      value: 9.6.2
+    - name: SERVERLESS_VERSION
+      value: 3.28.1
     - name: BUILDX_VERSION
       value: 0.10.4
     - name: BINFMT_VERSION
@@ -45,5 +51,10 @@ blocks:
             - >-
               docker buildx build 
               --platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 
+              --build-arg NODE_VERSION=$NODE_VERSION 
+		          --build-arg NPM_VERSION=$NPM_VERSION 
+		          --build-arg SERVERLESS_VERSION=$SERVERLESS_VERSION 
               --tag $DOCKER_USERNAME/$DOCKER_IMAGE:$SEMAPHORE_GIT_TAG_NAME 
-              --tag $DOCKER_USERNAME/$DOCKER_IMAGE:latest --push "."
+              --tag $DOCKER_USERNAME/$DOCKER_IMAGE:latest
+              --push 
+              "."

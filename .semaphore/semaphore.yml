@@ -36,7 +36,13 @@ blocks:
         - name: 'Build and test'
           commands:
             - checkout
-            - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE "."
+            - >-
+              docker build 
+              --build-arg NODE_VERSION=$NODE_VERSION
+		          --build-arg NPM_VERSION=$NPM_VERSION
+		          --build-arg SERVERLESS_VERSION=$SERVERLESS_VERSION
+              --tag $DOCKER_USERNAME/$DOCKER_IMAGE 
+              "."
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux v3.17"
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "VERSION_ID=3.17.2"
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE node -v | grep $NODE_VERSION
