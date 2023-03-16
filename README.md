@@ -5,7 +5,7 @@ Docker Serverless
 
 | CD / CI   | Status |
 | --------- | ------ |
-| Semaphore CI | TBD |
+| Semaphore CI | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-serverless/branches/master.svg?style=shields&key=bd338b60-d353-4360-9911-4b81d6574423)](https://sineverba.semaphoreci.com/projects/docker-serverless) |
 
 
 ## Usage
