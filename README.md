@@ -15,7 +15,7 @@ Docker Serverless
 
 ## Usage in .bashrc
 
-`alias serverless='docker run -it sineverba/serverless:1.0.0 -v ${PWD}:/app serverless`
+`alias serverless='docker run -it -v ${PWD}:/app --entrypoint serverless --rm sineverba/serverless:1.0.0'`
 
 
 ## Github / image tags and versions
