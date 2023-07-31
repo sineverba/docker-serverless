@@ -1,10 +1,10 @@
 IMAGE_NAME=sineverba/serverless
 CONTAINER_NAME=serverless
 APP_VERSION=1.0.0-dev
-NODE_VERSION=18.15.0
-NPM_VERSION=9.6.2
-SERVERLESS_VERSION=3.28.1
-BUILDX_VERSION=0.10.4
+NODE_VERSION=18.17.0
+NPM_VERSION=9.8.1
+SERVERLESS_VERSION=3.33.0
+BUILDX_VERSION=0.11.2
 BINFMT_VERSION=qemu-v7.0.0-28
 
 build:
@@ -37,8 +37,8 @@ multi: preparemulti
 		"."
 
 test:
-	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) cat /etc/os-release | grep "Alpine Linux v3.17"
-	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) cat /etc/os-release | grep "VERSION_ID=3.17.2"
+	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) cat /etc/os-release | grep "Alpine Linux v3.18"
+	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) cat /etc/os-release | grep "VERSION_ID=3.18.2"
 	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) node -v | grep $(NODE_VERSION)
 	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) npm -v | grep $(NPM_VERSION)
 	docker run --rm -it $(IMAGE_NAME):$(APP_VERSION) serverless -v | grep $(SERVERLESS_VERSION)
@@ -52,5 +52,5 @@ screate:
 		serverless create --template aws-nodejs-typescript --path aws-serverless-typescript-api
 
 destroy:
-	docker image rm node:$(NODE_VERSION)-alpine3.17
-	docker image rm $(IMAGE_NAME):$(APP_VERSION)
+	-docker image rm node:$(NODE_VERSION)-alpine3.18
+	-docker image rm $(IMAGE_NAME):$(APP_VERSION)

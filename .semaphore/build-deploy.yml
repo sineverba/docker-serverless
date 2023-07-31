@@ -23,13 +23,13 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: serverless
     - name: NODE_VERSION
-      value: 18.15.0
+      value: 18.17.0
     - name: NPM_VERSION
-      value: 9.6.2
+      value: 9.8.1
     - name: SERVERLESS_VERSION
-      value: 3.28.1
+      value: 3.33.0
     - name: BUILDX_VERSION
-      value: 0.10.4
+      value: 0.11.2
     - name: BINFMT_VERSION
       value: qemu-v7.0.0-28
 
@@ -41,7 +41,13 @@ blocks:
           commands:
             - checkout
             - mkdir -vp ~/.docker/cli-plugins/
-            - curl --silent -L "https://github.com/docker/buildx/releases/download/v$BUILDX_VERSION/buildx-v$BUILDX_VERSION.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+            - >-
+              curl 
+              --silent 
+              -L 
+              "https://github.com/docker/buildx/releases/download/v$BUILDX_VERSION/buildx-v$BUILDX_VERSION.linux-amd64" 
+              > 
+              ~/.docker/cli-plugins/docker-buildx
             - chmod a+x ~/.docker/cli-plugins/docker-buildx
             - docker buildx version
             - docker run --rm --privileged tonistiigi/binfmt:$BINFMT_VERSION --install all
