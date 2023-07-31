@@ -22,5 +22,5 @@ Docker Serverless
 
 | Github / Docker Image tag | Node Version | NPM Version | Serverless version | Architecture |
 | ------------------------- | ------------ | ----------- | ------------------ | ------------ |
-| latest | 18.15.0 | 9.6.2 | 3.28.1 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
+| latest | 18.17.0 | 9.8.1 | 3.33.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
 | 1.0.0 | 18.15.0 | 9.6.2 | 3.28.1 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
