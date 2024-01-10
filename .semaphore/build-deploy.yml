@@ -6,7 +6,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 execution_time_limit:
-  hours: 3
+  hours: 23
 
 global_job_config:
 
