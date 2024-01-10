@@ -1,5 +1,5 @@
-ARG NODE_VERSION=18.17.0
-FROM node:$NODE_VERSION-alpine3.18
+ARG NODE_VERSION=20.10.0
+FROM node:$NODE_VERSION-alpine3.19
 # Set versions from Make, otherwise use default
 ## NPM
 ARG NPM_VERSION=latest

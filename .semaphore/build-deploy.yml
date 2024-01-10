@@ -6,7 +6,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu2004
 execution_time_limit:
-  hours: 3
+  hours: 23
 
 global_job_config:
 
@@ -23,13 +23,13 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: serverless
     - name: NODE_VERSION
-      value: 18.17.0
+      value: 20.10.0
     - name: NPM_VERSION
-      value: 9.8.1
+      value: 10.2.5
     - name: SERVERLESS_VERSION
-      value: 3.33.0
+      value: 3.38.0
     - name: BUILDX_VERSION
-      value: 0.11.2
+      value: 0.12.0
     - name: BINFMT_VERSION
       value: qemu-v7.0.0-28
 
