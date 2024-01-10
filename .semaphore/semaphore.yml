@@ -21,11 +21,11 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: serverless
     - name: NODE_VERSION
-      value: 18.17.0
+      value: 20.10.0
     - name: NPM_VERSION
-      value: 9.8.1
+      value: 10.2.5
     - name: SERVERLESS_VERSION
-      value: 3.33.0
+      value: 3.38.0
 
 blocks:
   - name: 'Build and test'
@@ -43,8 +43,8 @@ blocks:
               --build-arg SERVERLESS_VERSION=$SERVERLESS_VERSION 
               --tag $DOCKER_USERNAME/$DOCKER_IMAGE 
               "."
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux v3.18"
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "VERSION_ID=3.18.2"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux v3.19"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "VERSION_ID=3.19.0"
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE node -v | grep $NODE_VERSION
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep $NPM_VERSION
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE serverless -v | grep $SERVERLESS_VERSION
