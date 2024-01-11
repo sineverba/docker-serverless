@@ -1,4 +1,7 @@
-# 1.2.1
+# 1.2.2
++ Fix documentation
+
+## 1.2.1
 + Fix Docker multiplatform
 
 ## 1.2.0

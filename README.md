@@ -10,12 +10,12 @@ Docker Serverless
 
 ## Usage
 
-`$ docker run --rm -it sineverba/serverless:1.1.0 -v [YOUR_VOLUME]:app/ serverless [COMMAND]`
+`$ docker run --rm -it sineverba/serverless:1.2.2 -v [YOUR_VOLUME]:app/ serverless [COMMAND]`
 
 
 ## Usage in .bashrc
 
-`alias serverless='docker run -it -v ${PWD}:/app --entrypoint serverless --rm sineverba/serverless:1.1.0'`
+`alias serverless='docker run -it -v ${PWD}:/app --entrypoint serverless --rm sineverba/serverless:1.2.2'`
 
 
 ## Github / image tags and versions
@@ -23,6 +23,6 @@ Docker Serverless
 | Github / Docker Image tag | Node Version | NPM Version | Serverless version | Architecture |
 | ------------------------- | ------------ | ----------- | ------------------ | ------------ |
 | latest | 20.10.0 | 10.2.5 | 3.38.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
-| 1.2.0 | 20.10.0 | 10.2.5 | 3.38.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
+| 1.2.2 | 20.10.0 | 10.2.5 | 3.38.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
 | 1.1.0 | 18.17.0 | 9.8.1 | 3.33.0 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
 | 1.0.0 | 18.15.0 | 9.6.2 | 3.28.1 | linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 |
