@@ -1,4 +1,7 @@
-# 1.2.0
+# 1.2.1
++ Fix Docker multiplatform
+
+## 1.2.0
 + Upgrade dependencies
 
 ## 1.1.0
