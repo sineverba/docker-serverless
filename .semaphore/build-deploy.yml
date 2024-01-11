@@ -30,8 +30,6 @@ global_job_config:
       value: 3.38.0
     - name: BUILDX_VERSION
       value: 0.12.0
-    - name: BINFMT_VERSION
-      value: qemu-v7.0.0-28
 
 blocks:
   - name: 'Build and deploy'
@@ -50,9 +48,8 @@ blocks:
               ~/.docker/cli-plugins/docker-buildx
             - chmod a+x ~/.docker/cli-plugins/docker-buildx
             - docker buildx version
-            - docker run --rm --privileged tonistiigi/binfmt:$BINFMT_VERSION --install all
             - docker buildx ls
-            - docker buildx create --name multiarch --driver docker-container --use
+            - docker buildx create --name multiarch --use
             - docker buildx inspect --bootstrap --builder multiarch
             - >-
               docker buildx build 

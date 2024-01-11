@@ -5,7 +5,7 @@ NODE_VERSION=20.10.0
 NPM_VERSION=10.2.5
 SERVERLESS_VERSION=3.38.0
 BUILDX_VERSION=0.12.0
-BINFMT_VERSION=qemu-v7.0.0-28
+
 
 build:
 	docker build \
@@ -24,14 +24,15 @@ preparemulti:
 		~/.docker/cli-plugins/docker-buildx
 	chmod a+x ~/.docker/cli-plugins/docker-buildx
 	docker buildx version
-	docker run --rm --privileged tonistiigi/binfmt:$(BINFMT_VERSION) --install all
 	docker buildx ls
-	docker buildx rm multiarch
-	docker buildx create --name multiarch --driver docker-container --use
+	docker buildx create --name multiarch --use
 	docker buildx inspect --bootstrap --builder multiarch
 
-multi: preparemulti
+multi: 
 	docker buildx build \
+		--build-arg NODE_VERSION=$(NODE_VERSION) \
+		--build-arg NPM_VERSION=$(NPM_VERSION) \
+		--build-arg SERVERLESS_VERSION=$(SERVERLESS_VERSION) \
 		--platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 \
 		--tag $(IMAGE_NAME):$(APP_VERSION) \
 		"."
